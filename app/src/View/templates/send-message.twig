@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form Example</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>  <!-- Иконки -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: #034828;
+    }
+
+    label {
+        font-family: Montserrat Medium, sans-serif;
+        font-size: 16px;
+    }
+
+    .form-group1 {
+        background-color: #033820;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 150px; /* ширина окна */
+        height: 60px; /* высота окна */
+        font-size: 20px; /* размер шрифта */
+        margin-top: 5px;
+        margin-left: 200px;
+
+        position: relative;
+        top: -14px;
+        left: 0px;
+    }
+
+    .form-group2 {
+        background-color: #033820;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5px;
+    }
+
+    .form-signup button[type="submit"] {
+        width: 60%;
+        max-width: 200px;
+        margin-top: 20px;
+    }
+    .container-sub {
+        text-align: center;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    .mess1 {
+        color: #ffffff;
+        text-align: center;
+    }
+    #success-message {
+        position: absolute;
+        top: 99%; /* отступ сверху */
+        left: 30%; /* отступ слева */
+        color: #ff6d00;
+    }
+
+    .logout3 {
+        font-size: 12px;
+        padding: 8px 15px;
+        background-color: #0057ff;
+        color: #ffffff;
+        border: none;
+        border-radius: 9px;
+        box-shadow: 30px 12px 6px rgba(0, 0, 0, 0.0);
+        transition: all 0.3s ease;
+        position: relative;
+        left: 215px;
+        top: -29px;
+        margin-top: 30px;
+    }
+
+</style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto mt-5">
+            <div id="success-message">
+                {% if successMessage %}
+                    <p>{{ successMessage }}</p>
+                {% endif %}
+            </div>
+                <div>
+                    <a href="/dashboard/{{ fromUser }}?user_id={{ fromUser }}" class="logout3">
+                        <i class="fas fa-pencil-alt me-2" style="color: #fff;"></i>
+                        Личный кабинет
+                    </a>
+                </div>
+            <!-- Чат -->
+            <form action="/send-message" method="post" onsubmit="onSuccess()">
+                <div class="form-group1">
+                    <label for="recipient_id">ID получателя:</label>
+                    <input type="text" class="form-control" id="recipient_id" name="recipient_id" required>
+                </div>
+                <div class="form-group2">
+                    <label for="text">Текст сообщения:</label>
+                    <textarea class="form-control" id="text" name="text" rows="3" required></textarea>
+                </div>
+{#                <script>#}
+{#                    // Устанавливаем таймер на скрытие сообщения об успешной отправке#}
+{#                    setTimeout(function() {#}
+{#                        document.getElementById('success-message').style.display = 'none';#}
+{#                    }, 2000); // Скрываем сообщение через 2 секунды#}
+{#                </script>#}
+                <!-- JavaScript-код для скрытия сообщения об успешной отправке -->
+                <script>
+                    // Скрываем сообщение об успешной отправке при загрузке страницы
+                    document.getElementById('success-message').style.display = 'none';
+
+                    // Функция, которая будет вызываться при успешной отправке формы
+                    function onSuccess() {
+                        // Показываем сообщение об успешной отправке
+                        document.getElementById('success-message').style.display = 'block';
+
+                        // Устанавливаем таймер на скрытие сообщения об успешной отправке
+                        setTimeout(function() {
+                            document.getElementById('success-message').style.display = 'none';
+                        }, 2000); // Скрываем сообщение через 2 секунды
+                    }
+                </script>
+                <div class="container-sub">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNSgD9Q" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+<!-- Сообщения -->
+<head>
+    <meta charset="UTF-8">
+    <title>Входящие сообщения</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.3;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .message {
+            border: 2px solid #ff6d00;
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 50%; /* ограничиваем ширину рамки */
+            margin: 0 auto; /* центрируем элемент по горизонтали */
+            margin-top: 20px;
+        }
+        .message__sender {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .message__text {
+            margin-bottom: 8px;
+        }
+        .message__date {
+            color: #ffffff;
+            font-size: 12px;
+        }
+
+        .message__text i {
+            margin-right: 8px;
+        }
+        .message__date i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="mess1">
+    <h1>Входящие сообщения</h1>
+</div>
+{% for message in messages | sort((a, b) => b.datetimePublication.timestamp() - a.datetimePublication.timestamp()) %}
+    <div class="message">
+        <div class="message__sender"><i class="fas fa-user-edit" style="color:#ffffff;"></i> {{ message.sender.firstName }} {{ message.sender.lastName }} </div>
+        <div class="message__text"><i class="fas fa-envelope" style="color:#ffffff;"></i>{{ message.text|nl2br }}</div>
+        <div class="message__date"><i class="fas fa-clock" style="color:#ffffff;"></i>{{ message.datetimePublication|date('d.m.Y H:i:s') }}</div>
+    </div>
+{% endfor %}
+</body>
+</html>
+

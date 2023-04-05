@@ -1,0 +1,21 @@
+{
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.5",
+        "uma/dic": "^3.0",
+        "ext-pdo": "*",
+        "doctrine/orm": "*",
+        "doctrine/dbal": "*",
+        "symfony/cache": "*",
+        "twig/twig": "^3.5",
+        "slim/php-view": "^3.2",
+        "ramsey/uuid": "^4.7",
+        "doctrine/migrations": "^3.6",
+        "slim/twig-view": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
