@@ -7,4 +7,4 @@
 ⚙We've even included a profit calculator to accurately calculate your income and expenses. <br>
 ⚙And to keep you informed, our platform provides notifications for outages and overheating events.<br>
 
-//Добавлю еще описание 
+//Добавлю еще описание и перепешу описание которое выше .
