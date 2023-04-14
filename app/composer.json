@@ -11,7 +11,8 @@
         "slim/php-view": "^3.2",
         "ramsey/uuid": "^4.7",
         "doctrine/migrations": "^3.6",
-        "slim/twig-view": "^3.3"
+        "slim/twig-view": "^3.3",
+        "guzzlehttp/guzzle": "^7.5"
     },
     "autoload": {
         "psr-4": {

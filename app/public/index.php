@@ -3,6 +3,7 @@
 use App\Controller\DashboardController;
 use App\Controller\FriendController;
 use App\Controller\MessageController;
+use App\Controller\StatAsicController;
 use App\Controller\UserController;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -25,8 +26,8 @@ $app->get('/signIn', [UserController::class, 'signIn']); // роут котор�
 $app->post('/sendMessage', [MessageController::class, 'sendMessage']); // роут который отправляет сообщения ++
 $app->delete('/deleteMess/{id}', [UserController::class, 'deleteMess']); // роут удаляет сообщения
 
-$app->post('/friends', [FriendController::class, 'addFriend']);
-$app->get('/friends',[FriendController::class, "friends"]);
+//$app->post('/friends', [FriendController::class, 'addFriend']);
+//$app->get('/friends',[FriendController::class, "friends"]);
 
 
 //$app->put('/editUser/{id}', [UserController::class, "editUser"]); // роут который редактирует пользователя
@@ -41,7 +42,12 @@ $app->post('/login', [UserController::class, "signIn"]); // роут для об
 $app->get('/dashboard/{id}', [DashboardController::class, 'dashboard']); // роут входа в ЛК ++
 
 $app->get('/send-message', [MessageController::class, 'showSendMessageForm']); // форма сообщений
-$app->post('/send-message', [MessageController::class, 'sendMessage']); //  отправка сообщений
+$app->post('/send-message', [MessageController::class, 'sendMessage']); //  отправка сообщений.
+
+
+$app->get('/users/{id}/statistic', [StatAsicController::class, 'statAsic']);
+
+
 
 $app->run();
 

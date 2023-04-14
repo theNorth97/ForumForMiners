@@ -111,10 +111,6 @@ class MessageController
     {
         $errors = [];
 
-//        if (empty($arr['sender_id'])) {
-//            $errors['sender_id'] = 'ID  отправителя является обязательным полем';
-//        }
-
         if (empty($arr['recipient_id'])) {
             $errors['recipient_id'] = 'ID получателя является обязательным полем';
         }

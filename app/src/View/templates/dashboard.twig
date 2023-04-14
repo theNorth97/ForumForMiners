@@ -172,7 +172,24 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-rrJjKbh+zxkzY9pgp9tX+94t98sl8tE7P4TkEs0rz"></script>
 {#<iframe src="https://widget.nicehash.com/countdown/btc-halving-2024-05-10-12-00" width="400" height="350" scrolling="no" id="nhiframe" style="position: relative; left: 1420px; top: -375px;"></iframe>#}
 <iframe src="https://widget.nicehash.com/profcalc" width="300" height="350" scrolling="no" id="nhiframe" style="position: relative; left: 0px; top:10px;"></iframe>
-</div>
+
+        {% if minerData is defined and minerData is not empty %}
+            {% if minerData is iterable %}
+                <ul>
+                    {% for item in minerData %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="info"><i class="fas fa-envelope me-2" style="color: #ff6d00;"></i>Температура ASIC ???: {{ minerData }} t</p>
+            {% endif %}
+        {% else %}
+            <p>No data available</p>
+        {% endif %}
+
+
+
+    </div>
 </div>
 </body>
 <script>

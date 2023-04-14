@@ -4,6 +4,7 @@ namespace App\config;
 use App\Controller\DashboardController;
 use App\Controller\FriendController;
 use App\Controller\MessageController;
+use App\Controller\StatAsicController;
 use App\Controller\UserController;
 use App\Entity\Friend;
 use App\Entity\FriendRequest;
@@ -35,7 +36,6 @@ return [
 
         $renderer = $container->get(PhpRenderer::class);
 
-
     return new UserController($userRepository, $roleRepository, $renderer);
 },
 
@@ -48,7 +48,6 @@ return [
 
         /** @var MessageRepository $messageRepository */
         $messageRepository = $entityManager->getRepository(Message::class);
-
 
     return new MessageController($messageRepository, $userRepository );
 
@@ -77,7 +76,13 @@ return [
 
     },
 
-    EntityManager::class => static function (Container $c): EntityManager {
+    StatAsicController::class => function (Container $container) {
+        /** @var EntityManager $entityManager */
+        $entityManager = $container->get(EntityManager::class);
+        return new StatAsicController($entityManager);
+    },
+
+EntityManager::class => static function (Container $c): EntityManager {
 
     /** @var array $settings */
     $settings = $c->get('settings');
@@ -97,7 +102,6 @@ return [
     PhpRenderer::class => function () {
         return new PhpRenderer("../src/View/templates");
     },
-
 
     DashboardController::class => function (Container $container) {
         $renderer = $container->get(PhpRenderer::class);
