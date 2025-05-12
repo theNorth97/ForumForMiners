@@ -30,8 +30,8 @@ class StatAsicController
                 'Content-Type' => 'application/json',
             ],
             'body' => json_encode([
-                'email' => "on1ytrue@icloud.com",
-                'password' => "on1ytrue57.",
+                'email' => *******,
+                'password' => *******,
             ]),
         ]);
 
